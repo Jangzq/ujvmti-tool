@@ -37,9 +37,11 @@ ujvmti-tool是一个用jvmti实现的工具集，用来从正在执行的java进
 
 文件格式：
 类名,属性名,属性签名
+
 类名：“JNI type signature of the class” 比如java.util.List写作"Ljava/util/List;"。
 属性名和属性签名可以省略，如果设置，则打印这个对象的相应属性值。
-**注意：目前只支持属性签名为I**
+
+**注意：目前只支持属性签名为I的情况，即返回值为整型的函数**
 举例：
 
 ```
@@ -49,15 +51,17 @@ Ljava/util/ArrayList;,size,I
 
 ```
 
-缺省“指定类配置文件”：目标java进程的工作目录下的`ujvmfilter.cfg`。也可由调用virtualMachine.loadAgentPath时的options指定，格式为`dump_refer;文件路径`。
+缺省“指定类配置文件”：
+目标java进程的工作目录下的`ujvmfilter.cfg`。也可由调用virtualMachine.loadAgentPath时的options指定，格式为`dump_refer;文件路径`。
 
 **输出文件**
+
 目标java进程的工作目录下的`ujvmheapref.dat`，内容举例如下：
 
 >Reference Kind: JVMTI_HEAP_REFERENCE_STATIC_FIELD
 Referrer: Lcom/sun/org/apache/xerces/internal/impl/Constants;  Referree: [Ljava/lang/String;
 Array Length: 19
------------------------------------------
+\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--\-\-\-\-\-\-\-\--\-\-\-
 Reference Kind: JVMTI_HEAP_REFERENCE_FIELD
 Referrer: Lcom/sun/org/apache/xerces/internal/parsers/XIncludeAwareParserConfiguration;  Referree: Ljava/util/ArrayList;
 Self Size: 24
