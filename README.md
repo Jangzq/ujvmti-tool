@@ -72,8 +72,11 @@ size: 4
 ```
 
 ###dump_root
+
 打印Root引用，包括"local variable on the stack", " JNI local reference", "JNI global reference"。
+
 **输出文件**
+
 目标java进程的工作目录下的`ujvmrootref.dat`，内容举例如下：
 
 ```
